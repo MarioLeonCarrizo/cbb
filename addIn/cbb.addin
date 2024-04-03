@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+	<AddIn Type="Application">
+		<Name>Circle Bin Blog</Name>
+		<FullClassName>cbb.Main</FullClassName>
+		<Assembly>C:\Users\MSI_DB\source\repos\cbb\src\cbb\bin\x64\Debug\cbb.dll</Assembly>
+		<AddInId>B59456DD-A9FE-42EC-8A96-E358D93879B6</AddInId>
+		<VendorId>Mario Leon</VendorId>
+		<VendorDescription>Descripcion detallada del proyecto</VendorDescription>
+	</AddIn>
+</RevitAddIns>
