@@ -40,6 +40,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,9 +50,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\AnnotatePanel\TagWallLayerCommand.cs" />
+    <Compile Include="Commands\AnnotatePanel\Helpers\Message.cs" />
+    <Compile Include="Commands\AnnotatePanel\Selection\SelectionFilterByCategory.cs" />
+    <Compile Include="Commands\AnnotatePanel\TagWallLayers\TagWallLayerCommand.cs" />
+    <Compile Include="Commands\AnnotatePanel\TagWallLayers\TagWallLayerCommandData.cs" />
+    <Compile Include="Commands\AnnotatePanel\TagWallLayers\TagWallLayerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Commands\AnnotatePanel\TagWallLayers\TagWallLayerForm.Designer.cs">
+      <DependentUpon>TagWallLayerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\AnnotatePanel\Type\LengthUnitType.cs" />
+    <Compile Include="Commands\AnnotatePanel\Type\WindowType.cs" />
+    <Compile Include="Commands\FamilyManager\HideFamilyManagerCommand.cs" />
+    <Compile Include="Commands\FamilyManager\ShowFamilyManagerCommand.cs" />
+    <Compile Include="Commands\PaneIdentifiers.cs" />
     <Compile Include="CoreAssembly.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility\Units\LengthUnitConverter.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Commands\AnnotatePanel\TagWallLayers\TagWallLayerForm.resx">
+      <DependentUpon>TagWallLayerForm.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

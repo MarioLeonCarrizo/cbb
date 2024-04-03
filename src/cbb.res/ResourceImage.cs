@@ -6,7 +6,7 @@ namespace cbb.res
     {
         public static BitmapImage GetIcon(string name)
         {
-            var stream = ResourceAssembly.GetAssembly().GetManifestResourceStream(ResourceAssembly.GetNamespace() + "Images.Icons" + name);
+            var stream = ResourceAssembly.GetAssembly().GetManifestResourceStream(ResourceAssembly.GetNamespace() + "Images.Icons." + name);
             
             var image = new BitmapImage();
 

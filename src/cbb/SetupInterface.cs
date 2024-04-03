@@ -23,6 +23,7 @@ namespace cbb
             app.CreateRibbonTab(tabName);
 
             var panel = app.CreateRibbonPanel(tabName, "Annotation Commands");
+            var managerPanel = app.CreateRibbonPanel(tabName, "Family Manager");
 
             var TagWallButtonData = new RevitPushButtonDataModel
             {
@@ -35,6 +36,30 @@ namespace cbb
             };
 
             var tagWallButon = RevitPushButton.Create(TagWallButtonData);
+
+            var familyManagerShowButtonData = new RevitPushButtonDataModel
+            {
+                Label = "Show Family Manager",
+                Panel = managerPanel,
+                ToolTip = "This is some sample text, hello!",
+                CommandNamespace = ShowFamilyManagerCommand.GetPath(),
+                IconImageName = "32_px.png",
+                ToolTipImageName = "windows_128_px.png"
+            };
+
+            var familyShowButon = RevitPushButton.Create(familyManagerShowButtonData);
+
+            var familyManagerHideButtonData = new RevitPushButtonDataModel
+            {
+                Label = "Hide Family Manager",
+                Panel = managerPanel,
+                ToolTip = "This is some sample text, hello!",
+                CommandNamespace = HideFamilyManagerCommand.GetPath(),
+                IconImageName = "32_px.png",
+                ToolTipImageName = "windows_128_px.png"
+            };
+
+            var familyHideButon = RevitPushButton.Create(familyManagerHideButtonData);
         }
     }
 }
