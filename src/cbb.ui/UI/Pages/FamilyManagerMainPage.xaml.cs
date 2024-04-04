@@ -14,7 +14,7 @@ namespace cbb.ui
         {
             InitializeComponent();
 
-            //DataContext = new FamilyManagerMainPageViewModel();
+            DataContext = new FamilyManagerMainPageViewModel();
         }
 
         public void Dispose()

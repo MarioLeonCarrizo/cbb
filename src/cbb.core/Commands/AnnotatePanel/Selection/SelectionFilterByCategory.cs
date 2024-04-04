@@ -11,9 +11,9 @@ namespace cbb.core
 
     public class SelectionFilterByCategory : ISelectionFilter
     {
-        private string mCategory = "";
+        private BuiltInCategory mCategory = BuiltInCategory.INVALID;
 
-        public SelectionFilterByCategory(string category)
+        public SelectionFilterByCategory(BuiltInCategory category)
         {
             mCategory = category;
         }
@@ -23,7 +23,7 @@ namespace cbb.core
             if(elem.Category == null)
                 return false;
 
-            if (elem.Category.Name == mCategory)
+            if (elem.Category.Id.IntegerValue == (int)mCategory)
             {
                 return true;
             }

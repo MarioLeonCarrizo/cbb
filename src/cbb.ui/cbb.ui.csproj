@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\packages\PropertyChanged.Fody.4.1.0\build\PropertyChanged.Fody.props" Condition="Exists('..\..\packages\PropertyChanged.Fody.4.1.0\build\PropertyChanged.Fody.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -14,6 +15,8 @@
     <WarningLevel>4</WarningLevel>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -33,6 +36,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PropertyChanged, Version=4.1.0.0, Culture=neutral, PublicKeyToken=ee3ee20bcf148ddd, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\PropertyChanged.Fody.4.1.0\lib\net40\PropertyChanged.dll</HintPath>
+    </Reference>
     <Reference Include="RevitAPI">
       <HintPath>..\..\exc\RevitAPI.dll</HintPath>
     </Reference>
@@ -55,6 +61,9 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Animation\PageAnimationType.cs" />
+    <Compile Include="Converters\ItemTypeToColorValueConverter.cs" />
+    <Compile Include="Converters\MainApplicationPageValueConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -71,13 +80,27 @@
     <Compile Include="Revit\Register\RegisterFamilyManagerCommand.cs" />
     <Compile Include="Revit\RevitPushButton.cs" />
     <Compile Include="Revit\RevitPushButtonDataModel.cs" />
-    <Compile Include="Revit\UI\Pages\FamilyManagerMainPage.xaml.cs">
+    <Compile Include="UI\Controls\Family\FamilyItemControl.xaml.cs">
+      <DependentUpon>FamilyItemControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\Family\FamilyListsControl.xaml.cs">
+      <DependentUpon>FamilyListsControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Pages\Base\BasePage.cs" />
+    <Compile Include="UI\Pages\FamilyManagerMainPage.xaml.cs">
       <DependentUpon>FamilyManagerMainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Pages\Family\FamilyPage.xaml.cs">
+      <DependentUpon>FamilyPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Pages\Preferences\PreferencesPage.xaml.cs">
+      <DependentUpon>PreferencesPage.xaml</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -94,10 +117,68 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Revit\UI\Pages\FamilyManagerMainPage.xaml">
+    <Page Include="App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Converters\Converters.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\Buttons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\Colors.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\Context.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\Fonts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Controls\Family\FamilyItemControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Controls\Family\FamilyItemControlStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Controls\Family\FamilyListsControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Pages\FamilyManagerMainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Pages\Family\FamilyPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Pages\Preferences\PreferencesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="FodyWeavers.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="UI\Controls\Preferences\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\..\packages\Fody.6.6.4\build\Fody.targets" Condition="Exists('..\..\packages\Fody.6.6.4\build\Fody.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\packages\Fody.6.6.4\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Fody.6.6.4\build\Fody.targets'))" />
+    <Error Condition="!Exists('..\..\packages\PropertyChanged.Fody.4.1.0\build\PropertyChanged.Fody.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\PropertyChanged.Fody.4.1.0\build\PropertyChanged.Fody.props'))" />
+  </Target>
 </Project>

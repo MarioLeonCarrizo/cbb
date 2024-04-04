@@ -74,7 +74,7 @@
 
             try
             {
-                selectionReference = uidoc.Selection.PickObject(ObjectType.Element, new SelectionFilterByCategory("Muros"), "Select one basic wall.");
+                selectionReference = uidoc.Selection.PickObject(ObjectType.Element, new SelectionFilterByCategory(BuiltInCategory.OST_Walls), "Select one basic wall.");
                 selectionElement = doc.GetElement(selectionReference);
             }
             catch (Autodesk.Revit.Exceptions.OperationCanceledException)
