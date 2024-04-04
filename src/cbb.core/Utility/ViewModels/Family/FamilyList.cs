@@ -20,7 +20,13 @@ namespace cbb.core
                 // Check if directory has file items.
                 // Cast file items to the more specific FamilyItem.
                 if (fs.Length > 0)
-                    items.AddRange(fs.Select(file => new FamilyItem { FullPath = file }));
+                {
+                    foreach (var f in fs)
+                    {
+                        if (ItemTypeHelper.GetType(f) != ItemType.None)
+                            items.Add(new FamilyItem { FullPath = path });
+                    }
+                }
             }
             catch { }
 

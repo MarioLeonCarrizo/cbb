@@ -9,6 +9,10 @@
     using Autodesk.Revit.ApplicationServices;
 
     using cbb.ui;
+    using cbb.core;
+    using System.IO;
+    using System.Collections.Generic;
+
     /// <summary>
     /// Pluggins Main
     /// </summary>
@@ -28,6 +32,27 @@
         {
             var familyManager = new RegisterFamilyManagerCommand();
             familyManager.Execute(new UIApplication(sender as Application));
+
+            if(!PreferencesFileExists())
+            {
+                var prefs = new Preferences()
+                {
+                    Repository = new List<string>
+                    {
+                        Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                    }
+                };
+                prefs.Save();
+            }
+            else
+            {
+
+            }
+        }
+
+        private bool PreferencesFileExists()
+        {
+            return File.Exists(Path.Combine(Path.GetDirectoryName(CoreAssembly.GetAssemblyLocation().ToString()), "prefs.cbb"));
         }
 
         public Result OnShutdown(UIControlledApplication application)

@@ -21,5 +21,18 @@ namespace cbb.core
 
             return Path.GetFileNameWithoutExtension(fullPath.Substring(lastIndex +1));
         }
+
+        public static string GetFolderName(string fullPath)
+        {
+            if (string.IsNullOrEmpty(fullPath))
+                return string.Empty;
+
+            var lastIndex = fullPath.LastIndexOf('\\');
+
+            if (lastIndex <= 0)
+                return fullPath;
+
+            return fullPath.Substring(lastIndex + 1);
+        }
     }
 }

@@ -17,16 +17,15 @@ using cbb.core;
 namespace cbb.ui
 {
     /// <summary>
-    /// Lógica de interacción para PreferencesPage.xaml
+    /// Lógica de interacción para PreferencesList.xaml
     /// </summary>
-    public partial class PreferencesPage : BasePage
+    public partial class RepositoryListControl : UserControl
     {
-        public PreferencesPage()
+        public RepositoryListControl()
         {
             InitializeComponent();
-            DataContext = new PreferencesPageViewModel();
 
-            Animation = PageAnimationType.Slide;
+            DataContext = new RepositoryListViewModel();
         }
     }
 }

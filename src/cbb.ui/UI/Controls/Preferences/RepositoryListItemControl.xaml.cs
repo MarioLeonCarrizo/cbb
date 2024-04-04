@@ -12,21 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using cbb.core;
 
 namespace cbb.ui
 {
     /// <summary>
-    /// Lógica de interacción para PreferencesPage.xaml
+    /// Lógica de interacción para RepositoryListItemControl.xaml
     /// </summary>
-    public partial class PreferencesPage : BasePage
+    public partial class RepositoryListItemControl : UserControl
     {
-        public PreferencesPage()
+        public RepositoryListItemControl()
         {
             InitializeComponent();
-            DataContext = new PreferencesPageViewModel();
-
-            Animation = PageAnimationType.Slide;
         }
     }
 }

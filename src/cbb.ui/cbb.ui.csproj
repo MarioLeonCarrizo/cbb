@@ -86,6 +86,12 @@
     <Compile Include="UI\Controls\Family\FamilyListsControl.xaml.cs">
       <DependentUpon>FamilyListsControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Controls\Preferences\RepositoryListControl.xaml.cs">
+      <DependentUpon>RepositoryListControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\Preferences\RepositoryListItemControl.xaml.cs">
+      <DependentUpon>RepositoryListItemControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Pages\Base\BasePage.cs" />
     <Compile Include="UI\Pages\FamilyManagerMainPage.xaml.cs">
       <DependentUpon>FamilyManagerMainPage.xaml</DependentUpon>
@@ -153,6 +159,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UI\Controls\Preferences\RepositoryItemControlStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Controls\Preferences\RepositoryListControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Controls\Preferences\RepositoryListItemControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\Pages\FamilyManagerMainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -169,9 +187,7 @@
   <ItemGroup>
     <Resource Include="FodyWeavers.xml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="UI\Controls\Preferences\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\..\packages\Fody.6.6.4\build\Fody.targets" Condition="Exists('..\..\packages\Fody.6.6.4\build\Fody.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

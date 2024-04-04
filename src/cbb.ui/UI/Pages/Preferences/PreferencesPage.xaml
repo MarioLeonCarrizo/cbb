@@ -15,8 +15,8 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </local:BasePage.Resources>
-
-    <Grid Background="{StaticResource MainBackgroundBrush}">
-        
-    </Grid>
+    
+    <Border Background="{StaticResource MainBackgroundBrush}">
+        <local:RepositoryListControl/>
+    </Border>
 </local:BasePage>
